@@ -1,3 +1,6 @@
+# CMake stupid stuff
+build/
+
 # Prerequisites
 *.d
 
