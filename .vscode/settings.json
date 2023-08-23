@@ -1,3 +1,8 @@
 {
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+        "xstring": "cpp",
+        "string": "cpp",
+        "iostream": "cpp"
+    }
 }
