@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 
 #include "Cache.h"
@@ -6,17 +7,19 @@
 using std::cin;
 using std::cout;
 using std::endl;
+using std::ifstream;
 using std::stoi;
 using std::string;
 
-const bool debugMode = true;
+const bool debugMode = false;
+const int addressSizeBytes = 4;
 
 int main(int argc, char const *argv[])
 {
 	if (argc != 7)
 	{
 		printf("Numero de argumentos incorreto. Utilize:\n");
-		printf("cache_simulator <nsets> <bsize> <assoc> <substituição> <flag_saida> arquivo_de_entrada\n");
+		printf("cache_simulator <nsets> <bsize:bytes> <assoc> <substituição> <flag_saida:0 | 1> arquivo_de_entrada\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -36,13 +39,38 @@ int main(int argc, char const *argv[])
 		cout << "assoc: " << assoc << endl;
 		cout << "subst: " << subst << endl;
 		cout << "flag_saida: " << flag_saida << endl;
-		cout << "arquivo: " << arquivo << endl;
+		cout << "arquivo: " << arquivo << endl << endl;
 	}
 
 	// Creating cache
 	Cache cache(nsets, bsize, assoc, subst, flag_saida);
-	cache.printSetsData();
-	cache.~Cache();
-	
+
+	// Reading file
+	ifstream input(arquivo, std::ios::binary);
+
+	if (!input.is_open())
+	{
+		printf("Erro ao abrir arquivo de entrada.\n");
+		exit(EXIT_FAILURE);
+	}
+
+	char buffer[addressSizeBytes];
+	int address;
+	while (input.read(buffer, addressSizeBytes))
+	{
+		address = 0;
+		for (int i = 0; i < addressSizeBytes; ++i)
+			address |= (buffer[i] & 0xFF) << (8 * (addressSizeBytes - 1 - i));
+
+		if (debugMode)
+			cout << "Endereco: " << address << endl;
+
+		cache.accessAddress(address);
+	}
+
+	cache.printCacheInfo();
+
+	input.close();
+
 	return 0;
 }

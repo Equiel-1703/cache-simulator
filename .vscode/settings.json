@@ -1,9 +1,3 @@
 {
-    "cmake.configureOnOpen": false,
-    "files.associations": {
-        "xstring": "cpp",
-        "string": "cpp",
-        "iostream": "cpp",
-        "cmath": "cpp"
-    }
+    "cmake.configureOnOpen": false
 }

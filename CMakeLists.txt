@@ -5,10 +5,6 @@ project(cache_simulator)
 include_directories(include)
 
 # All source files
-set(SOURCES
-    src/main.cpp
-    src/CacheSet.cpp
-    src/Cache.cpp
-)
+file(GLOB SOURCES "src/*.cpp")
 
 add_executable(${PROJECT_NAME} ${SOURCES})

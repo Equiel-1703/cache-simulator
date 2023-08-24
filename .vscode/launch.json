@@ -1,0 +1,16 @@
+{
+    "configurations": [
+        {
+            "name": "C/C++: cl.exe  debug active file",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\..\\build\\Debug\\cache_simulator.exe",
+            "args": ["16", "4", "1", "r", "0", "bin_100.bin"],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}\\..\\build\\Debug\\",
+            "environment": [],
+            "console": "integratedTerminal",
+        }
+    ],
+    "version": "2.0.0"
+}
