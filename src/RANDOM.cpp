@@ -4,7 +4,7 @@
 
 RANDOM::RANDOM(int assoc) : SubsPolicy(assoc) {}
 
-void RANDOM::registerAccess(int via, int tag)
+void RANDOM::registerAccess(int via)
 {
     // Do nothing
 }
@@ -12,4 +12,9 @@ void RANDOM::registerAccess(int via, int tag)
 int RANDOM::getViaToReplace()
 {
     return rand() % assoc;
+}
+
+SubsPolicy *RANDOM::clone()
+{
+    return new RANDOM(*this);
 }

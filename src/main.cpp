@@ -3,6 +3,7 @@
 #include <string>
 
 #include "Cache.h"
+#include "LRU.h"
 
 using std::cin;
 using std::cout;

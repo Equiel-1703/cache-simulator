@@ -5,11 +5,6 @@
 class CacheSet
 {
 private:
-    static int setCount;
-    int setNumber;
-    int assoc;
-    SubsPolicy& subsPolicy;
-
     class Via
     {
     public:
@@ -24,6 +19,10 @@ private:
         }
     };
 
+    static int setCount;
+    int setNumber;
+    int assoc;
+    SubsPolicy *subsPolicy;
     Via *vias;
 
 public:
@@ -36,9 +35,9 @@ public:
 
     // Constructor and destructor
     CacheSet(int assoc, SubsPolicy& s);
+    CacheSet(const CacheSet& other); // Deep copy constructor
     ~CacheSet();
-    // Deep copy constructor
-    CacheSet(const CacheSet& other);
+    
     // Copy assignment operator
     CacheSet& operator=(const CacheSet& other);
 

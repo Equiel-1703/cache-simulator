@@ -4,18 +4,20 @@
 
 int CacheSet::setCount = 0;
 
-CacheSet::CacheSet(int assoc, SubsPolicy &s) : subsPolicy(s)
+CacheSet::CacheSet(int assoc, SubsPolicy &s)
 {
     this->assoc = assoc;
     setNumber = setCount++;
+    subsPolicy = s.clone();
 
     vias = new Via[assoc];
 }
 
-CacheSet::CacheSet(const CacheSet &other) : subsPolicy(other.subsPolicy)
+CacheSet::CacheSet(const CacheSet &other)
 {
     assoc = other.assoc;
     setNumber = other.setNumber;
+    subsPolicy = other.subsPolicy->clone();
 
     vias = new Via[assoc];
 
@@ -29,6 +31,7 @@ CacheSet::CacheSet(const CacheSet &other) : subsPolicy(other.subsPolicy)
 CacheSet::~CacheSet()
 {
     delete[] vias;
+    delete subsPolicy;
 }
 
 void CacheSet::print()
@@ -50,7 +53,7 @@ CacheSet::AccessResult CacheSet::access(int tag, int &occupiedVias)
     {
         if (vias[i].valid && vias[i].tag == tag)
         {
-            subsPolicy.registerAccess(i, tag);
+            subsPolicy->registerAccess(i);
             return HIT;
         }
     }
@@ -63,7 +66,7 @@ CacheSet::AccessResult CacheSet::access(int tag, int &occupiedVias)
         {
             vias[i].valid = true;
             vias[i].tag = tag;
-            subsPolicy.registerAccess(i, tag);
+            subsPolicy->registerAccess(i);
             ++occupiedVias;
             return COMPULSORY_MISS;
         }
@@ -71,9 +74,9 @@ CacheSet::AccessResult CacheSet::access(int tag, int &occupiedVias)
 
     // If there's no empty via, we have to replace one of them
     // Apply replacement policy
-    int viaToReplace = subsPolicy.getViaToReplace();
+    int viaToReplace = subsPolicy->getViaToReplace();
     vias[viaToReplace].tag = tag;
-    subsPolicy.registerAccess(viaToReplace, tag);
+    subsPolicy->registerAccess(viaToReplace);
 
     // Only Cache class can tell if it was a capacity miss or a conflict miss
     return OTHER_MISS;
@@ -85,6 +88,7 @@ CacheSet &CacheSet::operator=(const CacheSet &other)
         return *this;
 
     assoc = other.assoc;
+    subsPolicy = other.subsPolicy->clone();
     setNumber = other.setNumber;
 
     delete[] vias;

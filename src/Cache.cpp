@@ -24,12 +24,12 @@ Cache::Cache(int nsets, int bsize, int assoc, char subst, int flag_saida) : numB
     {
     case 'l':
     case 'L':
-        // substPolicy = new LRU(assoc);
+        substPolicy = new LRU(assoc);
         break;
 
     case 'f':
     case 'F':
-        // substPolicy = new FIFO(assoc);
+        substPolicy = new FIFO(assoc);
         break;
 
     default:
