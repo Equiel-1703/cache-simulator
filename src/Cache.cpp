@@ -52,6 +52,7 @@ Cache::Cache(int nsets, int bsize, int assoc, char subst, int flag_saida) : numB
 Cache::~Cache()
 {
     sets.clear();
+    delete substPolicy;
 }
 
 void Cache::printSetsData()

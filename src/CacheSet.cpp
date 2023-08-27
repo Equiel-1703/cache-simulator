@@ -88,8 +88,10 @@ CacheSet &CacheSet::operator=(const CacheSet &other)
         return *this;
 
     assoc = other.assoc;
-    subsPolicy = other.subsPolicy->clone();
     setNumber = other.setNumber;
+
+    delete subsPolicy;
+    subsPolicy = other.subsPolicy->clone();
 
     delete[] vias;
     vias = new Via[assoc];

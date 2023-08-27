@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>204</x>
+      <y>192</y>
+      <w>168</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>main
+-
++ debugMode: const bool
++ addressSizeBytes: const int
+-
+main(argc: int, argv: char const* [ ]): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>366</x>
+      <y>210</y>
+      <w>96</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>42</y>
+      <w>264</w>
+      <h>390</h>
+    </coordinates>
+    <panel_attributes>Cache
+-
+- addressSize: const int
+
+- nsets: int
+- bsize: int
+- assoc: int
+
+- substChar: char
+- flag_saida: int
+
+- cacheSize: int
+- realCacheSize: double
+
+- indexSize: int
+- offsetSize: int
+- tagSize: int
+
+- sets: vector&lt;CacheSet&gt;
+
+- accesses: int
+- occupiedBlocks: int
+- numBlocks: const int
+
+- substPolicy: SubsPolicy*
+
+- compulsoryMisses: int
+- capacityMisses: int
+- conflictMisses: int
+-
++ Cache(nsets: int, bsize: int, assoc: int, subst: char, flag_saida: int)
++ ~Cache()
+
++ printSetsData(): void
++ printCacheInfo(): void
+
++ accessAddress(address: int): void
+
+- getTag(address: int): int
+- getIndex(address: int): int
+- getOffset(address: int): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>576</x>
+      <y>426</y>
+      <w>18</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>498</y>
+      <w>264</w>
+      <h>144</h>
+    </coordinates>
+    <panel_attributes>CacheSet
+-
+_- setCount: int_
+- setNumber: int
+- assoc: int
+- subsPolicy: SubsPolicy*
+- vias: Via*
+-
++ CacheSet(assoc: int, s: SubsPolicy&amp;)
++ CacheSet(other: const CacheSet&amp;)
++ ~CacheSet()
+
++ operator=(other: const CacheSet&amp;): CacheSet&amp;
+
++ print(): void
++ access(tag: int, occupiedVias: int&amp;): AccessResult</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>498</x>
+      <y>636</y>
+      <w>18</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>450</x>
+      <y>684</y>
+      <w>108</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
+AccessResult
+-
+HIT
+COMPULSORY_MISS
+OTHER_MISS</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>606</x>
+      <y>690</y>
+      <w>108</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>Via
+-
++ valid: bool
++ tag: int
+-
+Via()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>654</x>
+      <y>636</y>
+      <w>18</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>708</x>
+      <y>210</y>
+      <w>276</w>
+      <h>18</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>440.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>708</x>
+      <y>210</y>
+      <w>276</w>
+      <h>378</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>440.0;10.0;100.0;10.0;100.0;610.0;10.0;610.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>972</x>
+      <y>174</y>
+      <w>144</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>/SubsPolicy/
+-
+- assoc: int
+-
++ SubsPolicy(assoc: int)
+
+/+ registerAccess(via: int): void/
+/+ getViaToReplace(): int/
+/+ clone(): SubsPolicy*/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>798</x>
+      <y>324</y>
+      <w>144</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>FIFO
+-
+- queue: list&lt;int&gt;
+-
+FIFO(assoc: int)
+FIFO(other: const FIFO&amp;)
+~FIFO()
+
++ registerAccess(via: int): void
++ getViaToReplace(): int
++ clone(): SubsPolicy*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>864</x>
+      <y>246</y>
+      <w>192</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>300.0;10.0;300.0;70.0;10.0;70.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>966</x>
+      <y>324</y>
+      <w>144</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>LRU
+-
+- elements: set&lt;int&gt;
+- order: list&lt;int&gt;
+-
+LRU(assoc: int)
+LRU(other: const LRU&amp;)
+~LRU()
+
++ registerAccess(via: int): void
++ getViaToReplace(): int
++ printElements(): void
++ clone(): SubsPolicy*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1134</x>
+      <y>324</y>
+      <w>144</w>
+      <h>114</h>
+    </coordinates>
+    <panel_attributes>RANDOM
+-
+RANDOM(assoc: int)
+
++ registerAccess(via: int): void
++ getViaToReplace(): int
++ clone(): SubsPolicy*</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1038</x>
+      <y>246</y>
+      <w>18</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1038</x>
+      <y>246</y>
+      <w>180</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;280.0;70.0;280.0;130.0</additional_attributes>
+  </element>
+</diagram>
