@@ -1,6 +1,6 @@
 #include "Cache.h"
 
-Cache::Cache(int nsets, int bsize, int assoc, char subst, int flag_saida) : numBlocks(nsets * assoc)
+Cache::Cache(int addrSize, int nsets, int bsize, int assoc, char subst, int flag_saida) : numBlocks(nsets * assoc), addressSizeBytes(addrSize)
 {
     this->nsets = nsets;
     this->bsize = bsize;
@@ -14,7 +14,7 @@ Cache::Cache(int nsets, int bsize, int assoc, char subst, int flag_saida) : numB
     // Calculating cache details
     indexSize = (int)log2(nsets);
     offsetSize = (int)log2(bsize);
-    tagSize = addressSize - (indexSize + offsetSize);
+    tagSize = addressSizeBits - (indexSize + offsetSize);
 
     // Calculating real cache size (in bytes)
     realCacheSize = (double)((tagSize + 1 + (bsize * 8)) * nsets * assoc) / 8.0;

@@ -19,8 +19,11 @@ using std::vector;
 
 class Cache
 {
+public:
+    int const addressSizeBytes;
+
 private:
-    const int addressSize = 32;
+    const int addressSizeBits = addressSizeBytes * 8;
 
     int nsets;
     int bsize;
@@ -37,7 +40,7 @@ private:
     int tagSize;
 
     vector<CacheSet> sets;
-    
+
     int accesses;
     int occupiedBlocks;
     const int numBlocks;
@@ -51,7 +54,7 @@ private:
 
 public:
     // Constructor and destructor
-    Cache(int nsets, int bsize, int assoc, char subst, int flag_saida);
+    Cache(int addrSize, int nsets, int bsize, int assoc, char subst, int flag_saida);
     ~Cache();
 
     // Print data

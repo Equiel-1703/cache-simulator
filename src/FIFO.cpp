@@ -1,5 +1,7 @@
 #include "FIFO.h"
 
+using std::find;
+
 FIFO::FIFO(int assoc) : SubsPolicy(assoc) {}
 
 FIFO::FIFO(const FIFO &other) : SubsPolicy(other.assoc)
@@ -14,7 +16,8 @@ FIFO::~FIFO()
 
 void FIFO::registerAccess(int via)
 {
-    if (queue.size() < assoc)
+    // If the via is not in the queue and the queue is not full
+    if ((find(queue.begin(), queue.end(), via) == queue.end()) && queue.size() < assoc)
     {
         queue.push_back(via);
     }
