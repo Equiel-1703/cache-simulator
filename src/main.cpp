@@ -18,7 +18,7 @@ int main(int argc, char const *argv[])
 	if (argc < 7 || argc > 8)
 	{
 		printf("Numero de argumentos incorreto. Utilize:\n");
-		printf("cache_simulator <nsets> <bsize:bytes> <assoc> <substituição> <flag_saida:0 | 1> <arquivo_de_entrada> <debugModeFlag:opcional>\n");
+		printf("cache_simulator <nsets> <bsize:bytes> <assoc> <substituição> <flag_saida:0 | 1> <arquivo_de_entrada> [OPCIONAL]<debug_mode_flag: 0 | 1>\n");
 		exit(EXIT_FAILURE);
 	}
 
