@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="15.1">
-  <zoom_level>18</zoom_level>
+  <zoom_level>7</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
-      <y>450</y>
-      <w>504</w>
-      <h>162</h>
+      <x>147</x>
+      <y>217</y>
+      <w>196</w>
+      <h>56</h>
     </coordinates>
     <panel_attributes>main
 -
 + debugMode: const bool
-+ addressSizeBytes: const int
 -
 main(argc: int, argv: char const* [ ]): int</panel_attributes>
     <additional_attributes/>
@@ -20,24 +19,25 @@ main(argc: int, argv: char const* [ ]): int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>486</x>
-      <y>504</y>
-      <w>288</w>
-      <h>54</h>
+      <x>336</x>
+      <y>238</y>
+      <w>70</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
-      <y>0</y>
-      <w>792</w>
-      <h>1170</h>
+      <x>392</x>
+      <y>35</y>
+      <w>371</w>
+      <h>462</h>
     </coordinates>
     <panel_attributes>Cache
 -
++ addressSizeBytes: const int
 - addressSizeBits: const int
 
 - nsets: int
@@ -66,7 +66,7 @@ main(argc: int, argv: char const* [ ]): int</panel_attributes>
 - capacityMisses: int
 - conflictMisses: int
 -
-+ Cache(nsets: int, bsize: int, assoc: int, subst: char, flag_saida: int)
++ Cache(addrSize: int,nsets: int, bsize: int, assoc: int, subst: char, flag_saida: int)
 + ~Cache()
 
 + printSetsData(): void
@@ -82,10 +82,10 @@ main(argc: int, argv: char const* [ ]): int</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1116</x>
-      <y>1152</y>
-      <w>54</w>
-      <h>252</h>
+      <x>574</x>
+      <y>490</y>
+      <w>21</w>
+      <h>98</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;120.0</additional_attributes>
@@ -93,10 +93,10 @@ main(argc: int, argv: char const* [ ]): int</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
-      <y>1368</y>
-      <w>792</w>
-      <h>432</h>
+      <x>427</x>
+      <y>574</y>
+      <w>308</w>
+      <h>168</h>
     </coordinates>
     <panel_attributes>CacheSet
 -
@@ -119,10 +119,10 @@ _- setCount: int_
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>882</x>
-      <y>1782</y>
-      <w>54</w>
-      <h>180</h>
+      <x>483</x>
+      <y>735</y>
+      <w>21</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
@@ -130,10 +130,10 @@ _- setCount: int_
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>738</x>
-      <y>1926</y>
-      <w>324</w>
-      <h>180</h>
+      <x>427</x>
+      <y>791</y>
+      <w>126</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes>&lt;&lt;Enumeration&gt;&gt;
 AccessResult
@@ -146,10 +146,10 @@ OTHER_MISS</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1206</x>
-      <y>1944</y>
-      <w>324</w>
-      <h>162</h>
+      <x>609</x>
+      <y>798</y>
+      <w>126</w>
+      <h>63</h>
     </coordinates>
     <panel_attributes>Via
 -
@@ -162,10 +162,10 @@ Via()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1350</x>
-      <y>1782</y>
-      <w>54</w>
-      <h>198</h>
+      <x>665</x>
+      <y>735</y>
+      <w>21</w>
+      <h>77</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
@@ -173,32 +173,32 @@ Via()</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1512</x>
-      <y>504</y>
-      <w>828</w>
-      <h>54</h>
+      <x>756</x>
+      <y>238</y>
+      <w>301</w>
+      <h>21</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>440.0;10.0;10.0;10.0</additional_attributes>
+    <additional_attributes>410.0;10.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1512</x>
-      <y>504</y>
-      <w>828</w>
-      <h>1134</h>
+      <x>728</x>
+      <y>238</y>
+      <w>329</w>
+      <h>441</h>
     </coordinates>
     <panel_attributes>lt=&lt;-</panel_attributes>
-    <additional_attributes>440.0;10.0;100.0;10.0;100.0;610.0;10.0;610.0</additional_attributes>
+    <additional_attributes>450.0;10.0;110.0;10.0;110.0;610.0;10.0;610.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2304</x>
-      <y>396</y>
-      <w>432</w>
-      <h>234</h>
+      <x>1043</x>
+      <y>196</y>
+      <w>168</w>
+      <h>91</h>
     </coordinates>
     <panel_attributes>/SubsPolicy/
 -
@@ -214,10 +214,10 @@ Via()</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1782</x>
-      <y>846</y>
-      <w>432</w>
-      <h>342</h>
+      <x>840</x>
+      <y>371</y>
+      <w>168</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>FIFO
 -
@@ -235,10 +235,10 @@ FIFO(other: const FIFO&amp;)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1980</x>
-      <y>612</y>
-      <w>576</w>
-      <h>270</h>
+      <x>917</x>
+      <y>280</y>
+      <w>224</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>300.0;10.0;300.0;70.0;10.0;70.0;10.0;130.0</additional_attributes>
@@ -246,10 +246,10 @@ FIFO(other: const FIFO&amp;)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2286</x>
-      <y>846</y>
-      <w>432</w>
-      <h>342</h>
+      <x>1036</x>
+      <y>371</y>
+      <w>168</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>LRU
 -
@@ -269,10 +269,10 @@ LRU(other: const LRU&amp;)
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2790</x>
-      <y>846</y>
-      <w>432</w>
-      <h>342</h>
+      <x>1232</x>
+      <y>371</y>
+      <w>168</w>
+      <h>133</h>
     </coordinates>
     <panel_attributes>RANDOM
 -
@@ -286,10 +286,10 @@ RANDOM(assoc: int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2502</x>
-      <y>612</y>
-      <w>54</w>
-      <h>270</h>
+      <x>1120</x>
+      <y>280</y>
+      <w>21</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
@@ -297,10 +297,10 @@ RANDOM(assoc: int)
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2502</x>
-      <y>612</y>
-      <w>540</w>
-      <h>270</h>
+      <x>1120</x>
+      <y>280</y>
+      <w>210</w>
+      <h>105</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0;280.0;70.0;280.0;130.0</additional_attributes>

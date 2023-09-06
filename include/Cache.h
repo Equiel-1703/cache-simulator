@@ -23,7 +23,7 @@ public:
     int const addressSizeBytes;
 
 private:
-    const int addressSizeBits = addressSizeBytes * 8;
+    const int addressSizeBits;
 
     int nsets;
     int bsize;

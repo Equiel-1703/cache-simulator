@@ -1,6 +1,6 @@
 #include "Cache.h"
 
-Cache::Cache(int addrSize, int nsets, int bsize, int assoc, char subst, int flag_saida) : numBlocks(nsets * assoc), addressSizeBytes(addrSize)
+Cache::Cache(int addrSize, int nsets, int bsize, int assoc, char subst, int flag_saida) : numBlocks(nsets * assoc), addressSizeBytes(addrSize), addressSizeBits(addressSizeBytes * 8)
 {
     this->nsets = nsets;
     this->bsize = bsize;
