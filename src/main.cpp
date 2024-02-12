@@ -13,6 +13,11 @@ using std::string;
 
 bool debugMode = false;
 
+bool isBase2(int val)
+{
+	return (val & (val - 1)) == 0;
+}
+
 int main(int argc, char const *argv[])
 {
 	if (argc < 7 || argc > 8)
@@ -32,6 +37,25 @@ int main(int argc, char const *argv[])
 	char subst = argv[4][0];
 	int flag_saida = stoi(argv[5]);
 	string arquivo = argv[6];
+
+	// Checking parameters
+	if (nsets <= 0 || !isBase2(nsets))
+	{
+		printf("<nsets> deve ser uma potencia de 2.\n");
+		exit(EXIT_FAILURE);
+	}
+
+	if (bsize <= 0 || !isBase2(bsize))
+	{
+		printf("<bsize> deve ser uma potencia de 2.\n");
+		exit(EXIT_FAILURE);
+	}
+
+	if (assoc <= 0 || !isBase2(assoc))
+	{
+		printf("<assoc> deve ser uma potencia de 2.\n");
+		exit(EXIT_FAILURE);
+	}
 
 	if (argc == 8)
 		debugMode = stoi(argv[7]);
